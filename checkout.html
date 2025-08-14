@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Informasi Pembeli</title>
+</head>
+<body>
+    <h1>Informasi Pembeli</h1>
+    <form action="{{ url_for('checkout') }}" method="post">
+        <label for="buyer_name">Nama Pembeli:</label>
+        <input type="text" id="buyer_name" name="buyer_name" required>
+        <br>
+        <label for="buyer_address">Alamat:</label>
+        <input type="text" id="buyer_address" name="buyer_address" required>
+        <br><br>
+        <button type="submit">Lanjutkan ke Nota</button>
+    </form>
+    <a href="{{ url_for('index') }}"><button>Kembali</button></a>
+</body>
+</html>

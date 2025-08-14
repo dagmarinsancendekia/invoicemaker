@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nota Pembelian</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .invoice-container { max-width: 800px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { margin: 0; }
+        .header p { margin: 0; color: #555; }
+        .buyer-info { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+        .buyer-info p { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .total { text-align: right; font-weight: bold; font-size: 1.2em; }
+        .footer { text-align: right; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <h1>Nama Toko</h1>
+            <p>Jl. jalan, Kelurahan, kota, Kode Pos 123456</p>
+            <p>Telp/wa : 0812345678</p>
+        </div>
+        <hr>
+
+        <div class="buyer-info">
+            <p><strong>Kepada Yth:</strong></p>
+            <p>Nama Pembeli: {{ buyer_info['name'] }}</p>
+            <p>Alamat: {{ buyer_info['address'] }}</p>
+        </div>
+
+        <h2>Nota Pembelian</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Harga Satuan</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in purchases %}
+                    <tr>
+                        <td>{{ item['item_name'] }}</td>
+                        <td>Rp {{ "{:,.2f}".format(item['price']) }}</td>
+                        <td>{{ item['quantity'] }}</td>
+                        <td>Rp {{ "{:,.2f}".format(item['total_price']) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="total">
+            Total Pembayaran: Rp {{ "{:,.2f}".format(total_bill) }}
+        </div>
+
+        <div class="footer">
+            <p>Hormat kami,</p>
+            <br><br>
+            <p>_(...............)_</p>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <a href="{{ url_for('clear_all') }}"><button>Buat Nota Baru</button></a>
+    </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nota Pembelian</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .invoice-container { max-width: 800px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .header h1 { margin: 0; }
+        .header p { margin: 0; color: #555; }
+        .buyer-info { margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+        .buyer-info p { margin: 5px 0; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .total { text-align: right; font-weight: bold; font-size: 1.2em; }
+        .footer { text-align: right; margin-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="header">
+            <h1>Nama Toko</h1>
+            <p>Jl. jalan, Kelurahan, kota, Kode Pos 123456</p>
+            <p>Telp/wa : 0812345678</p>
+        </div>
+        <hr>
+
+        <div class="buyer-info">
+            <p><strong>Kepada Yth:</strong></p>
+            <p>Nama Pembeli: {{ buyer_info['name'] }}</p>
+            <p>Alamat: {{ buyer_info['address'] }}</p>
+        </div>
+
+        <h2>Nota Pembelian</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Barang</th>
+                    <th>Harga Satuan</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in purchases %}
+                    <tr>
+                        <td>{{ item['item_name'] }}</td>
+                        <td>Rp {{ "{:,.2f}".format(item['price']) }}</td>
+                        <td>{{ item['quantity'] }}</td>
+                        <td>Rp {{ "{:,.2f}".format(item['total_price']) }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="total">
+            Total Pembayaran: Rp {{ "{:,.2f}".format(total_bill) }}
+        </div>
+
+        <div class="footer">
+            <p>Hormat kami,</p>
+            <br><br>
+            <p>_(...............)_</p>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <a href="{{ url_for('clear_all') }}"><button>Buat Nota Baru</button></a>
+    </div>
+</body>
+</html>
